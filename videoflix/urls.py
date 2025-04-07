@@ -11,6 +11,7 @@ urlpatterns = (
     [
         path("", RedirectView.as_view(url="/admin/", permanent=True), name="index"),
         path('admin/', admin.site.urls),
+        path("django-rq/", include("django_rq.urls")),
         path("registration/", RegistrationView.as_view(), name="registration"),
         path("verification/", VerificationView.as_view(), name="verification"),
         path("resend_verifiction/", ResendVerificationEmailView.as_view(), name="resend_verification"),
