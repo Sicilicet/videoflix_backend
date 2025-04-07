@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Confirm Your Email</title>
+  </head>
+  <body style="font-family: 'Roboto', Arial, sans-serif; background-color: #f4f4f4; padding: 20px">
+    <div style="max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1)">
+      <p style="font-size: 16px">Dear {{ user.username }},</p>
+      <p style="font-size: 16px">
+        Thank you for registering with
+        <a href="localhost:4200" style="font-size: 16px; color: #2e3edf; text-decoration: none">Videoflix</a>. To complete your registration
+        and verify your email address, please click the link below:
+      </p>
+      <a
+        href="{{ verification_url }}"
+        style="display: inline-block; padding: 12px 24px; background-color: #2e3edf; color: white; text-decoration: none; border-radius: 40px"
+        >Activate Account</a
+      >
+      <p style="font-size: 16px; margin-top: 20px">
+        If you did not create an account with us, please disregard this email.<br /><br />
+
+        Best regards,<br /><br />
+
+        Your Videoflix Team.
+      </p>
+    </div>
+  </body>
+</html>

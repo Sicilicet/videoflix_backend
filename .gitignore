@@ -92,6 +92,7 @@ venv.bak/
 
 # mypy 
 .mypy_cache/ 
+sent_emails/
 
 # Sublime Text # 
 *.tmlanguage.cache 
