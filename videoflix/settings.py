@@ -192,3 +192,17 @@ RQ_QUEUES = {
 }
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "DEBUG",
+    },
+}
