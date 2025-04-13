@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     "authentication_app",
     "django_rq",
     "import_export",
+    "content_app.apps.ContentAppConfig",
+    "watch_history_app",
 ]
 
 MIDDLEWARE = [

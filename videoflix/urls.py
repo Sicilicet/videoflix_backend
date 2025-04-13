@@ -6,6 +6,8 @@ from django.conf.urls.static import static
 from debug_toolbar.toolbar import debug_toolbar_urls
 from authentication_app.views import (CustomLoginView, ForgotPasswordView, LogoutView, RegistrationView,
                                       ResendVerificationEmailView, ResetPasswordView, VerificationView)
+from content_app.views import DashboardView, HeroView, VideoView
+from watch_history_app.views import UpdateWatchHistory
 
 urlpatterns = (
     [
@@ -19,6 +21,11 @@ urlpatterns = (
         path("reset_password/", ResetPasswordView.as_view(), name="reset_password"),
         path("login/", CustomLoginView.as_view(), name="login"),
         path("logout/", LogoutView.as_view(), name="logout"),
+        path("dashboard/", DashboardView.as_view(), name="dashboard"),
+        path("hero/", HeroView.as_view(), name="hero"),
+        path("video/", VideoView.as_view(), name="video"),
+        path("update_watch_history/", UpdateWatchHistory.as_view(), name="update_watch_history",
+             ),
     ]
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
