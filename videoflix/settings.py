@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,14 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1nygomj5-ph%=i6%svlj7dc_8^!rmsd9zle8l$1tbjyx-d+&gy'
+SECRET_KEY = os.getenv("SECRET_KEY", default="django-insecure-4v@#)8!$&*0g3@7j1b5z2x6@9^+q3c0r1f!$=5@#&h3g4j2k3")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost",
-                 "127.0.0.1",
-                 "localhost:4200",]
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", default="localhost").split(",")
 
 # Application definition
 
@@ -138,9 +137,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "authentication_app.CustomUser"
 
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
+INTERNAL_IPS = os.getenv("INTERNAL_IPS", default="127.0.0.1").split(",")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
@@ -152,29 +149,25 @@ REST_FRAMEWORK = {
     ],
 }
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:4200", "http://127.0.0.1:4200"]
-
-
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:4200",
-    "http://127.0.0.1:8000",
-]
+CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", default="http://localhost:4200").split(",")
+CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", default="http://localhost:4200").split(",")
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 
-load_dotenv()
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 DEFAULT_FROM_EMAIL = "support@videoflix.de"
+REDIS_LOCATION = os.getenv("REDIS_LOCATION", default="redis://127.0.0.1:6379/1")
+REDIS_PASSWORD = os.getenv("REDIS_PASSWORD", default="foobared")
 
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://192.168.178.41:6379/1",
+        "LOCATION": REDIS_LOCATION,
         "OPTIONS": {
-            "PASSWORD": "foobared",
+            "PASSWORD": REDIS_PASSWORD,
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
         "KEY_PREFIX": "videoflix",
@@ -185,10 +178,10 @@ CACHE_TTL = 60 * 15  # 15 minutes
 
 RQ_QUEUES = {
     "default": {
-        "HOST": "192.168.178.41",
-        "PORT": 6379,
+        "HOST": REDIS_LOCATION,
+        "PORT": os.getenv("REDIS_PORT", default="6379"),
         "DB": 0,
-        "PASSWORD": "foobared",
+        "PASSWORD": REDIS_PASSWORD,
         "DEFAULT_TIMEOUT": 360,
     },
 }
