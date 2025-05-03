@@ -1,11 +1,13 @@
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from videoflix import settings
-from django.core.signing import TimestampSigner, SignatureExpired, BadSignature
+from django.core.signing import TimestampSigner
 from django.contrib.auth import get_user_model
+import os
 
 signer = TimestampSigner()
 User = get_user_model()
+FRONTEND_BASE_URL = os.getenv('FRONTEND_BASE_URL', default='http://localhost:4200')
 
 
 def send_verification_email(request, user):
@@ -14,7 +16,7 @@ def send_verification_email(request, user):
     """
     token = signer.sign(user.email)
     subject = "Confirm your email"
-    verification_url = f"http://127.0.0.1/verification/{token}"
+    verification_url = f"{FRONTEND_BASE_URL}/verification/{token}"
     html_message = render_to_string(
         "verification_email.html", {"user": user, "verification_url": verification_url}
     )
@@ -34,7 +36,7 @@ def send_reset_password_email(request, email):
     """
     token = signer.sign(email)
     subject = "Reset Videoflix password"
-    reset_password_url = f"http://127.0.0.1/reset-password/{token}"
+    reset_password_url = f"{FRONTEND_BASE_URL}/reset-password/{token}"
     html_message = render_to_string(
         "reset_password_email.html", {"reset_password_url": reset_password_url}
     )
