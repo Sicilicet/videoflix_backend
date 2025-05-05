@@ -22,6 +22,7 @@ CACHE_TTL = getattr(settings, "CACHE_TTL", DEFAULT_TIMEOUT)
 
 
 class DashboardView(APIView):
+    serializer_class = None
     def get(self, request):
         """
         This function returns the data for the dashboard. It gets the 6 latest videos, the videos the user has watched, all the categories and the videos sorted by categories.
@@ -62,6 +63,7 @@ class DashboardView(APIView):
 
 @method_decorator(cache_page(CACHE_TTL), name="dispatch")
 class HeroView(APIView):
+    serializer_class = None
     def get(self, request):
         """
         This function returns the data for the hero area. If the user is new on the page, the latest video is returned, else the selected video.
@@ -95,6 +97,7 @@ class HeroView(APIView):
 
 
 class VideoView(APIView):
+    serializer_class = None
     def get(self, request):
         """
         This function returns the video data for the actual video the user wants to watch. It returns the m3u8 file based on the given resolution.

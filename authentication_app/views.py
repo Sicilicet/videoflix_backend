@@ -20,6 +20,7 @@ User = get_user_model()
 
 
 class RegistrationView(APIView):
+    serializer_class = RegistrationSerializer
     permission_classes = [AllowAny]
 
     def post(self, request):
@@ -47,6 +48,7 @@ class RegistrationView(APIView):
 
 
 class VerificationView(APIView):
+    serializer_class = UserVerificationSerializer
     permission_classes = [AllowAny]
 
     def post(self, request):
@@ -71,6 +73,7 @@ class VerificationView(APIView):
 
 
 class ResendVerificationEmailView(APIView):
+    serializer_class = None
     permission_classes = [AllowAny]
 
     def post(self, request):
@@ -97,6 +100,7 @@ class ResendVerificationEmailView(APIView):
 
 
 class ForgotPasswordView(APIView):
+    serializer_class = None
     permission_classes = [AllowAny]
 
     def post(self, request):
@@ -116,6 +120,7 @@ class ForgotPasswordView(APIView):
 
 
 class ResetPasswordView(APIView):
+    serializer_class = ResetPasswordSerializer
     permission_classes = [AllowAny]
 
     def post(self, request):
@@ -174,6 +179,7 @@ class CustomLoginView(ObtainAuthToken):
 
 
 class LogoutView(APIView):
+    serializer_class = None
     def post(self, request):
         """
         This function logs out the user by deleting the token.

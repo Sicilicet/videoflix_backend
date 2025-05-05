@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "import_export",
     "content_app.apps.ContentAppConfig",
     "watch_history_app",
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -157,6 +158,7 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.TokenAuthentication",
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", default="http://localhost:4200").split(",")

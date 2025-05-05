@@ -49,7 +49,6 @@ class VideoAdmin(ImportExportModelAdmin):
         if obj:
             return [
                 "id",
-                "title",
                 "video_file",
                 "hls_file_360",
                 "hls_file_480",

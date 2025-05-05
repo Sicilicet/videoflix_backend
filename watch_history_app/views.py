@@ -7,6 +7,7 @@ from watch_history_app.models import WatchHistory
 
 
 class UpdateWatchHistory(APIView):
+    serializer_class = None
 
     def post(self, request):
         """
