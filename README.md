@@ -96,7 +96,7 @@ To add a new video category add it in content/models.py in the video model to th
 
 Once a video has been uploaded:
 
-    Title and Video File: These fields cannot be edited. If changes are necessary, the existing video must be deleted, and a new video should be uploaded with the updated details.
+    Video File: This field cannot be edited. If changes are necessary, the existing video must be deleted, and a new video should be uploaded with the updated details.
     This approach ensures consistency in video metadata and avoids complications in the system.
 
 ## Managing users
