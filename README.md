@@ -73,18 +73,27 @@ python manage.py createsuperuser
 ```
 
 ## API endpoints
+## Authentication
+- `/api/auth/registration/` — POST — Create a new user.
+- `/api/auth/verification/` — POST — Save the verification of a user.
+- `/api/auth/resend_verification/` — POST — Resend a verification email.
+- `/api/auth/forgot_password/` — POST — Send email to reset password.
+- `/api/auth/reset_password/` — POST — Reset a password.
+- `/api/auth/login/` — POST — Log in a user.
+- `/api/auth/logout/` — POST — Log out a user.
 
-- `/api/registration/` - POST - Create a new user.
-- `/api/verification/` - POST - Save the verification of a user.
-- `/api/resend_verifiction/` - POST - Resends a verification email.
-- `/api/forgot_password/` - POST - Sends email to reset password.
-- `/api/reset_password/` - POST - Resets a password.
-- `/api/login/` - POST - Logs in a user.
-- `/api/logout/` - POST - Logs out a user.\*
-- `/api/dashboard/` - GET - Gets the data for the dashboard.\*
-- `/api/hero/` - GET - Gets the data for the hero section.\*
-- `/api/video/<id>/` - GET - Gets the data for a video.\*
-- `/api/update_watch_history/<id>/<resolution>` - POST - Updates the watch history of a user.\*
+## Content
+- `/api/content/dashboard/` — GET — Get the data for the dashboard.
+- `/api/content/hero/` — GET — Get the data for the hero section.
+- `/api/content/video/<id>/` — GET — Get the data for a video.
+
+## Watch History
+- `/api/watch/update_watch_history/<id>/<resolution>/` — POST — Update the watch history of a user.
+
+## API Documentation
+- `/api/schema/` — GET — OpenAPI schema (JSON).
+- `/api/docs/` — GET — Swagger UI documentation.
+- `/api/redoc/` — GET — ReDoc documentation.
 
 \*authentication token required
 
