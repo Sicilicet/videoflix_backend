@@ -73,7 +73,9 @@ python manage.py createsuperuser
 ```
 
 ## API endpoints
+
 ## Authentication
+
 - `/api/auth/registration/` — POST — Create a new user.
 - `/api/auth/verification/` — POST — Save the verification of a user.
 - `/api/auth/resend_verification/` — POST — Resend a verification email.
@@ -83,14 +85,17 @@ python manage.py createsuperuser
 - `/api/auth/logout/` — POST — Log out a user.
 
 ## Content
+
 - `/api/content/dashboard/` — GET — Get the data for the dashboard.
 - `/api/content/hero/` — GET — Get the data for the hero section.
 - `/api/content/video/<id>/` — GET — Get the data for a video.
 
 ## Watch History
+
 - `/api/watch/update_watch_history/<id>/<resolution>/` — POST — Update the watch history of a user.
 
 ## API Documentation
+
 - `/api/schema/` — GET — OpenAPI schema (JSON).
 - `/api/docs/` — GET — Swagger UI documentation.
 - `/api/redoc/` — GET — ReDoc documentation.
@@ -111,3 +116,13 @@ Once a video has been uploaded:
 ## Managing users
 
 When registrating a user, please make sure that the username and email are equal. As in the front end only the email is asked during registration, the email is set as the username which then will be used for the login process.
+
+## Running tests
+
+Run the Django test suite with:
+
+```bash
+python manage.py test
+```
+
+To run tests with a debugger use the python debugger. Adjust launch.json to access specific tests or test groups.
